@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Skycast — Real-Time Weather Forecast, Live Radar & Climate Maps</title>
+    <meta name="title" content="Skycast — Real-Time Weather Forecast, Live Radar & Climate Maps" />
+    <meta
+      name="description"
+      content="Get fast, accurate real-time weather forecasts, 12-hour hourly outlooks, 7-day temperature trends, and cinematic precipitation radar loops for cities worldwide."
+    />
+    <meta name="keywords" content="weather forecast, live weather radar, global weather, hourly forecast, 7-day outlook, precipitation radar, wind map, Skycast" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://skycast-weather.netlify.app/" />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="/sun.png" />
+    <link rel="apple-touch-icon" href="/sun.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skycast-weather.netlify.app/" />
+    <meta property="og:title" content="Skycast — Real-Time Weather Forecast, Live Radar & Climate Maps" />
+    <meta
+      property="og:description"
+      content="Get fast, accurate real-time weather forecasts, 12-hour hourly outlooks, 7-day temperature trends, and cinematic precipitation radar loops for cities worldwide."
+    />
+    <meta property="og:image" content="/sun.png" />
+    <meta property="og:site_name" content="Skycast" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Skycast — Real-Time Weather Forecast & Live Radar" />
+    <meta
+      name="twitter:description"
+      content="Get fast, accurate real-time weather forecasts, hourly projections, and live precipitation radar loops."
+    />
+    <meta name="twitter:image" content="/sun.png" />
+
+    <!-- Performance: Preconnect & Fast Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      />
+    </noscript>
+
+    <!-- Structured Data (JSON-LD) for Search Engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Skycast",
+        "url": "https://skycast-weather.netlify.app/",
+        "description": "High-performance real-time global weather tracking, 7-day forecasts, and live interactive radar maps.",
+        "applicationCategory": "WeatherApplication",
+        "operatingSystem": "All modern web browsers",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-slate-900 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skycast-weather.netlify.app/sitemap.xml
