@@ -353,16 +353,16 @@ export default function WeatherMap() {
   return (
     <div className="min-h-screen bg-slate-950 pb-16 font-sans text-slate-100">
       {/* Top Banner */}
-      <div className="container mx-auto px-4 pt-4 lg:px-16">
+      <div className="container mx-auto px-3 pt-3 sm:px-4 sm:pt-4 lg:px-16">
         <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-blue-500" />
-              <h1 className="text-2xl font-black tracking-tight text-white md:text-3xl">
+              <h1 className="text-xl font-black tracking-tight text-white sm:text-2xl md:text-3xl">
                 Global Interactive Weather Map
               </h1>
             </div>
-            <p className="text-xs text-slate-400 md:text-sm">
+            <p className="mt-0.5 text-xs text-slate-400 sm:text-sm">
               Explore live radar precipitation, wind flow particle streamlines, and real-time conditions worldwide.
             </p>
           </div>
@@ -431,9 +431,9 @@ export default function WeatherMap() {
         </div>
 
         {/* ── Control Bar: Weather Movement Modes & Map Styles ─ */}
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900/80 p-2.5 backdrop-blur-lg">
+        <div className="mb-4 flex flex-col gap-2.5 rounded-2xl border border-slate-800 bg-slate-900/80 p-2 sm:p-2.5 backdrop-blur-lg sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           {/* Weather Movement Layers */}
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex w-full items-center gap-1 overflow-x-auto no-scrollbar touch-pan-x pb-1 sm:w-auto sm:gap-1.5 sm:overflow-visible sm:pb-0">
             <span className="mr-1 hidden text-xs font-bold text-slate-400 sm:inline-block">
               Motion Layer:
             </span>
@@ -442,7 +442,7 @@ export default function WeatherMap() {
                 key={mode.id}
                 type="button"
                 onClick={() => setWeatherMode(mode.id)}
-                className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${
+                className={`flex shrink-0 items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-xs font-semibold transition-all sm:px-3 ${
                   weatherMode === mode.id
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30"
                     : "bg-slate-800/60 text-slate-300 hover:bg-slate-700/80 hover:text-white"
@@ -458,7 +458,7 @@ export default function WeatherMap() {
           <div className="flex flex-wrap items-center gap-2">
             {/* Map Styles Selector */}
             <div className="flex items-center gap-1 rounded-xl bg-slate-800/60 p-1">
-              <span className="px-2 text-[11px] font-bold text-slate-400">
+              <span className="px-1.5 text-[10px] font-bold text-slate-400 sm:px-2 sm:text-[11px]">
                 Map:
               </span>
               {BASE_MAPS.map((b) => (
@@ -466,7 +466,7 @@ export default function WeatherMap() {
                   key={b.id}
                   type="button"
                   onClick={() => setBaseMapId(b.id)}
-                  className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold transition ${
+                  className={`rounded-lg px-2 py-1 text-[10px] font-semibold transition sm:px-2.5 sm:text-[11px] ${
                     baseMapId === b.id
                       ? "bg-indigo-600 text-white shadow"
                       : "text-slate-400 hover:text-white"
@@ -481,14 +481,14 @@ export default function WeatherMap() {
             <button
               type="button"
               onClick={() => setShowCityPins(!showCityPins)}
-              className={`flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition ${
+              className={`flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-[11px] font-semibold transition sm:px-3 sm:text-xs ${
                 showCityPins
                   ? "border-emerald-500/40 bg-emerald-500/20 text-emerald-300"
                   : "border-slate-700 bg-slate-800/60 text-slate-400 hover:text-white"
               }`}
             >
               <span>{showCityPins ? "✓" : "○"}</span>
-              <span>City Labels & Badges</span>
+              <span>City Badges</span>
             </button>
           </div>
         </div>
@@ -496,9 +496,9 @@ export default function WeatherMap() {
         {/* ── Main Grid: Map + Sidebar ──────────────────────── */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* ── Interactive Map Viewport ─────────────────────── */}
-          <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl lg:col-span-2">
+          <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl sm:rounded-3xl lg:col-span-2">
             {/* Map Canvas */}
-            <div style={{ height: 600, width: "100%" }}>
+            <div className="h-[400px] w-full sm:h-[480px] lg:h-[600px]">
               <MapContainer
                 center={[selectedCity.latitude, selectedCity.longitude]}
                 zoom={currentZoom}
@@ -643,13 +643,13 @@ export default function WeatherMap() {
 
             {/* ── Interactive Radar Playback Bar (When Radar mode is active) ─ */}
             {weatherMode === "radar" && radarFrames.length > 0 && (
-              <div className="absolute bottom-4 left-4 right-4 z-[1000] flex flex-col gap-2 rounded-2xl border border-slate-700/60 bg-slate-900/90 p-3 shadow-2xl backdrop-blur-xl md:flex-row md:items-center md:justify-between">
+              <div className="absolute bottom-3 left-3 right-3 z-[1000] flex flex-col gap-2 rounded-xl border border-slate-700/60 bg-slate-900/90 p-2.5 shadow-2xl backdrop-blur-xl sm:rounded-2xl sm:p-3 md:flex-row md:items-center md:justify-between">
                 {/* Playback controls */}
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setIsRadarPlaying(!isRadarPlaying)}
-                    className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg transition hover:bg-blue-500"
+                    className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg transition hover:bg-blue-500 sm:h-9 sm:w-9"
                     title={isRadarPlaying ? "Pause radar motion" : "Play radar motion"}
                   >
                     {isRadarPlaying ? "⏸" : "▶"}
@@ -666,7 +666,7 @@ export default function WeatherMap() {
                 </div>
 
                 {/* Timeline Scrubber */}
-                <div className="flex flex-1 items-center gap-3 px-2">
+                <div className="flex flex-1 items-center gap-2 px-1 sm:gap-3 sm:px-2">
                   <span className="text-[10px] font-medium text-slate-400">
                     -2h
                   </span>
@@ -687,7 +687,7 @@ export default function WeatherMap() {
                 </div>
 
                 {/* Speed selector */}
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 self-end sm:self-auto">
                   <span className="text-[10px] text-slate-400">Speed:</span>
                   {[0.5, 1, 2].map((s) => (
                     <button
@@ -709,7 +709,7 @@ export default function WeatherMap() {
 
             {/* ── Wind Flow Legend (When Wind mode is active) ─ */}
             {weatherMode === "wind" && (
-              <div className="absolute bottom-4 left-4 z-[1000] flex flex-wrap items-center gap-3 rounded-xl border border-slate-700/60 bg-slate-900/90 px-3.5 py-2 text-[11px] backdrop-blur-md">
+              <div className="absolute bottom-3 left-3 z-[1000] flex max-w-[calc(100%-24px)] flex-wrap items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-900/90 p-2 text-[10px] backdrop-blur-md sm:gap-3 sm:px-3.5 sm:py-2 sm:text-[11px]">
                 <span className="font-bold text-slate-300">Wind Velocity:</span>
                 <span className="flex items-center gap-1 text-sky-300">
                   <span className="h-2 w-2 rounded-full bg-sky-400" /> Calm (&lt; 15 km/h)
@@ -728,7 +728,7 @@ export default function WeatherMap() {
 
             {/* ── Temperature Legend (When Temperature mode is active) ─ */}
             {weatherMode === "temperature" && (
-              <div className="absolute bottom-4 left-4 z-[1000] flex flex-wrap items-center gap-3 rounded-xl border border-slate-700/60 bg-slate-900/90 px-3.5 py-2 text-[11px] backdrop-blur-md">
+              <div className="absolute bottom-3 left-3 z-[1000] flex max-w-[calc(100%-24px)] flex-wrap items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-900/90 p-2 text-[10px] backdrop-blur-md sm:gap-3 sm:px-3.5 sm:py-2 sm:text-[11px]">
                 <span className="font-bold text-slate-300">Temp Scale:</span>
                 {tempLegend.map((r) => (
                   <span key={r.l} className="flex items-center gap-1 text-slate-300">
@@ -743,7 +743,7 @@ export default function WeatherMap() {
             )}
 
             {/* ── Map Mode Badge (Top Left) ─ */}
-            <div className="absolute left-4 top-4 z-[1000] flex items-center gap-2 rounded-xl border border-slate-700/60 bg-slate-900/90 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
+            <div className="absolute left-3 top-3 z-[1000] flex items-center gap-1.5 rounded-xl border border-slate-700/60 bg-slate-900/90 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md sm:left-4 sm:top-4 sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs">
               <span className="h-2 w-2 rounded-full bg-blue-500 shadow-md shadow-blue-500" />
               <span>{WEATHER_MODES.find((m) => m.id === weatherMode)?.label}</span>
               <span className="text-[10px] text-slate-400">
@@ -753,9 +753,9 @@ export default function WeatherMap() {
           </div>
 
           {/* ── Sidebar: Selected City Weather & Context ───────── */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4 sm:gap-5">
             {/* Selected City Card */}
-            <section className="relative overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-slate-900 via-slate-900/90 to-blue-950/40 p-6 shadow-2xl backdrop-blur-xl">
+            <section className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-slate-900 via-slate-900/90 to-blue-950/40 p-4 shadow-2xl backdrop-blur-xl sm:rounded-3xl sm:p-6">
               <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-blue-500/10 blur-2xl" />
 
               <div className="mb-3 flex items-center justify-between">

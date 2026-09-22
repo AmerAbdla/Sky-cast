@@ -66,11 +66,11 @@ export default function Forecast() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 pb-16 font-sans text-slate-100">
-      <div className="container mx-auto px-4 pt-8 lg:px-20">
-        <div className="mb-8 flex flex-col justify-between gap-6 border-b border-slate-700/50 pb-6 md:flex-row md:items-center">
+      <div className="container mx-auto px-3 pt-4 sm:px-4 sm:pt-8 lg:px-20">
+        <div className="mb-6 flex flex-col justify-between gap-4 border-b border-slate-700/50 pb-4 sm:mb-8 sm:pb-6 md:flex-row md:items-center">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-white">7-day forecast</h1>
-            <p className="mt-1 text-sm text-slate-400">
+            <h1 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">7-day forecast</h1>
+            <p className="mt-1 text-xs text-slate-400 sm:text-sm">
               Extended outlook for{" "}
               <span className="font-medium text-blue-400">{activeCity.name}</span>
             </p>
@@ -85,8 +85,8 @@ export default function Forecast() {
         )}
 
         {status === "error" && (
-          <div className="my-8 rounded-2xl border border-red-500/20 bg-red-500/10 p-6 text-center">
-            <p className="mb-4 text-red-300">{error}</p>
+          <div className="my-8 rounded-2xl border border-red-500/20 bg-red-500/10 p-5 text-center sm:p-6">
+            <p className="mb-4 text-sm text-red-300 sm:text-base">{error}</p>
             <button
               type="button"
               onClick={refresh}
@@ -99,38 +99,38 @@ export default function Forecast() {
 
         {status === "ready" && forecast && (
           <>
-            <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+            <div className="mb-8 grid grid-cols-2 gap-2 sm:mb-10 sm:grid-cols-4 sm:gap-3 lg:grid-cols-7">
               {days.map((item) => (
                 <article
                   key={item.key}
-                  className={`flex flex-col items-center justify-between gap-2 rounded-2xl border p-4 text-center ${
+                  className={`flex flex-col items-center justify-between gap-2 rounded-xl border p-3 text-center sm:rounded-2xl sm:p-4 ${
                     item.isToday
                       ? "border-blue-400 bg-gradient-to-b from-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/20"
                       : "border-slate-700/50 bg-slate-800/40 text-slate-200 backdrop-blur-md"
                   }`}
                 >
                   <div>
-                    <h2 className="text-base font-bold">{dayName(item.date, item.isToday)}</h2>
-                    <p className={`text-xs ${item.isToday ? "text-blue-100" : "text-slate-400"}`}>
+                    <h2 className="text-sm font-bold sm:text-base">{dayName(item.date, item.isToday)}</h2>
+                    <p className={`text-[11px] sm:text-xs ${item.isToday ? "text-blue-100" : "text-slate-400"}`}>
                       {shortDate(item.date)}
                     </p>
                   </div>
 
-                  <span aria-hidden="true" className="my-1 text-3xl">
+                  <span aria-hidden="true" className="my-1 text-2xl sm:text-3xl">
                     {item.icon}
                   </span>
 
                   <p
-                    className={`text-xs font-medium ${
+                    className={`text-[11px] font-medium sm:text-xs ${
                       item.isToday ? "text-blue-100" : "text-slate-400"
                     }`}
                   >
                     {item.condition}
                   </p>
 
-                  <p className="mt-1 flex items-baseline gap-2">
-                    <span className="text-lg font-bold">{round(item.high)}°</span>
-                    <span className={`text-xs ${item.isToday ? "text-blue-200" : "text-slate-400"}`}>
+                  <p className="mt-1 flex items-baseline gap-1.5 sm:gap-2">
+                    <span className="text-base font-bold sm:text-lg">{round(item.high)}°</span>
+                    <span className={`text-[11px] sm:text-xs ${item.isToday ? "text-blue-200" : "text-slate-400"}`}>
                       {round(item.low)}°
                     </span>
                   </p>
@@ -138,10 +138,10 @@ export default function Forecast() {
               ))}
             </div>
 
-            <section className="mb-10 rounded-3xl border border-slate-700/50 bg-slate-800/40 p-6 shadow-2xl backdrop-blur-xl lg:p-8">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-                <h2 className="text-lg font-bold text-white">Temperature and rain outlook</h2>
-                <div className="flex items-center gap-4 text-xs font-medium">
+            <section className="mb-8 rounded-2xl border border-slate-700/50 bg-slate-800/40 p-4 shadow-2xl backdrop-blur-xl sm:mb-10 sm:rounded-3xl sm:p-6 lg:p-8">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3 sm:mb-6">
+                <h2 className="text-base font-bold text-white sm:text-lg">Temperature and rain outlook</h2>
+                <div className="flex items-center gap-3 text-[11px] font-medium sm:gap-4 sm:text-xs">
                   <span className="flex items-center gap-1.5 text-blue-400">
                     <span className="inline-block h-0.5 w-3 rounded-full bg-blue-400" /> High
                   </span>
@@ -151,8 +151,8 @@ export default function Forecast() {
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
-                <div className="min-w-[600px]">
+              <div className="overflow-x-auto touch-pan-x custom-scrollbar -mx-2 px-2 pb-2">
+                <div className="min-w-[550px] sm:min-w-[600px]">
                   <TemperatureChart days={days} unitSymbol={unitSymbol} />
 
                   <div
@@ -161,65 +161,65 @@ export default function Forecast() {
                   >
                     {days.map((item) => (
                       <div key={item.key} className="flex flex-col items-center gap-1.5">
-                        <span className="text-xs font-semibold text-slate-300">
+                        <span className="text-[11px] font-semibold text-slate-300 sm:text-xs">
                           {dayName(item.date, item.isToday)}
                         </span>
-                        <div className="flex h-16 w-full items-end justify-center rounded-lg bg-slate-900/60 p-1">
+                        <div className="flex h-14 w-full items-end justify-center rounded-lg bg-slate-900/60 p-1 sm:h-16">
                           {/* Bar height represents true precipitation probability percentage */}
                           <div
                             className="w-full rounded bg-blue-500"
                             style={{ height: `${item.rain}%` }}
                           />
                         </div>
-                        <span className="text-xs font-medium text-blue-400">{item.rain}%</span>
+                        <span className="text-[11px] font-medium text-blue-400 sm:text-xs">{item.rain}%</span>
                       </div>
                     ))}
                   </div>
-                  <p className="mt-3 text-center text-xs text-slate-500">
+                  <p className="mt-3 text-center text-[11px] text-slate-500 sm:text-xs">
                     Bars show the highest chance of rain during each day.
                   </p>
                 </div>
               </div>
             </section>
 
-            <section className="rounded-3xl border border-slate-700/50 bg-slate-800/40 p-6 shadow-2xl backdrop-blur-xl lg:p-8">
-              <h2 className="mb-6 text-2xl font-bold text-white">Hour by hour</h2>
+            <section className="rounded-2xl border border-slate-700/50 bg-slate-800/40 p-4 shadow-2xl backdrop-blur-xl sm:rounded-3xl sm:p-6 lg:p-8">
+              <h2 className="mb-4 text-xl font-bold text-white sm:mb-6 sm:text-2xl">Hour by hour</h2>
 
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-slate-300">
+              <div className="overflow-x-auto touch-pan-x custom-scrollbar -mx-2 px-2">
+                <table className="w-full min-w-[500px] text-left text-slate-300">
                   <caption className="sr-only">
                     Next 12 hours in {activeCity.name}
                   </caption>
                   <thead>
-                    <tr className="border-b border-slate-700/60 text-xs text-slate-400">
-                      <th scope="col" className="px-4 py-3">Time</th>
-                      <th scope="col" className="px-4 py-3">Condition</th>
-                      <th scope="col" className="px-4 py-3 text-center">Temp</th>
-                      <th scope="col" className="px-4 py-3 text-center">Feels like</th>
-                      <th scope="col" className="px-4 py-3 text-center">Humidity</th>
-                      <th scope="col" className="px-4 py-3 text-center">Rain</th>
+                    <tr className="border-b border-slate-700/60 text-[11px] text-slate-400 sm:text-xs">
+                      <th scope="col" className="px-3 py-2.5 sm:px-4 sm:py-3">Time</th>
+                      <th scope="col" className="px-3 py-2.5 sm:px-4 sm:py-3">Condition</th>
+                      <th scope="col" className="px-3 py-2.5 text-center sm:px-4 sm:py-3">Temp</th>
+                      <th scope="col" className="px-3 py-2.5 text-center sm:px-4 sm:py-3">Feels like</th>
+                      <th scope="col" className="px-3 py-2.5 text-center sm:px-4 sm:py-3">Humidity</th>
+                      <th scope="col" className="px-3 py-2.5 text-center sm:px-4 sm:py-3">Rain</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
                     {forecast.hourly.map((row) => (
-                      <tr key={row.key} className="text-sm hover:bg-slate-800/40">
-                        <td className="px-4 py-3.5 font-semibold text-white">
+                      <tr key={row.key} className="text-xs sm:text-sm hover:bg-slate-800/40">
+                        <td className="whitespace-nowrap px-3 py-3 font-semibold text-white sm:px-4 sm:py-3.5">
                           {row.isNow ? "Now" : clockTime(row.date)}
                         </td>
-                        <td className="px-4 py-3.5">
-                          <span className="flex items-center gap-2">
-                            <span aria-hidden="true" className="text-lg">{row.icon}</span>
+                        <td className="whitespace-nowrap px-3 py-3 sm:px-4 sm:py-3.5">
+                          <span className="flex items-center gap-1.5 sm:gap-2">
+                            <span aria-hidden="true" className="text-base sm:text-lg">{row.icon}</span>
                             {row.condition}
                           </span>
                         </td>
-                        <td className="px-4 py-3.5 text-center font-bold text-blue-300">
+                        <td className="whitespace-nowrap px-3 py-3 text-center font-bold text-blue-300 sm:px-4 sm:py-3.5">
                           {round(row.temperature)}°
                         </td>
-                        <td className="px-4 py-3.5 text-center text-slate-400">
+                        <td className="whitespace-nowrap px-3 py-3 text-center text-slate-400 sm:px-4 sm:py-3.5">
                           {round(row.apparentTemperature)}°
                         </td>
-                        <td className="px-4 py-3.5 text-center text-blue-400">{row.humidity}%</td>
-                        <td className="px-4 py-3.5 text-center text-slate-400">{row.rain}%</td>
+                        <td className="whitespace-nowrap px-3 py-3 text-center text-blue-400 sm:px-4 sm:py-3.5">{row.humidity}%</td>
+                        <td className="whitespace-nowrap px-3 py-3 text-center text-slate-400 sm:px-4 sm:py-3.5">{row.rain}%</td>
                       </tr>
                     ))}
                   </tbody>

@@ -82,3 +82,20 @@ input[type="range"].weather-timeline::-webkit-slider-thumb:hover {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.8);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Touch optimization for mobile scrolling */
+.touch-pan-x {
+  -webkit-overflow-scrolling: touch;
+}
+

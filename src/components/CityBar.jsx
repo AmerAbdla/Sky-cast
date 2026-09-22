@@ -55,7 +55,7 @@ function SearchDialog({ onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/70 p-4 pt-24 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/70 p-3 pt-16 sm:p-4 sm:pt-24 backdrop-blur-md"
       onMouseDown={(e) => {
         if (!dialogRef.current?.contains(e.target)) onClose();
       }}
@@ -65,19 +65,19 @@ function SearchDialog({ onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label="Add a city"
-        className="relative max-h-[80vh] w-full max-w-xl overflow-y-auto rounded-3xl border border-slate-700/60 bg-slate-900 p-6 shadow-2xl sm:p-8"
+        className="relative max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-slate-700/60 bg-slate-900 p-5 shadow-2xl sm:rounded-3xl sm:p-8"
       >
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:text-white sm:right-6 sm:top-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
         >
           ✕
         </button>
 
-        <h2 className="mb-1 text-2xl font-bold text-white">Add a city</h2>
-        <p className="mb-6 text-sm text-slate-400">
+        <h2 className="mb-1 text-xl font-bold text-white sm:text-2xl">Add a city</h2>
+        <p className="mb-4 text-xs text-slate-400 sm:mb-6 sm:text-sm">
           Search by city name, then pick the right match.
         </p>
 
@@ -148,7 +148,7 @@ export default function CityBar() {
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex w-full items-center gap-1.5 overflow-x-auto no-scrollbar touch-pan-x pb-1 sm:flex-wrap sm:gap-2 sm:overflow-visible sm:pb-0">
         {cities.map((city) => {
           const isActive = cityKey(city) === cityKey(activeCity);
           return (
@@ -158,7 +158,7 @@ export default function CityBar() {
               onClick={() => setActiveCity(city)}
               aria-current={isActive ? "true" : undefined}
               title={formatCityLabel(city)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                 isActive
                   ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30"
                   : "bg-slate-800/60 text-slate-300 hover:bg-slate-700 hover:text-white"
@@ -172,7 +172,7 @@ export default function CityBar() {
         <button
           type="button"
           onClick={() => setSearchOpen(true)}
-          className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          className="shrink-0 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 text-xs font-medium text-blue-300 transition-colors hover:bg-blue-500/20 sm:px-4 sm:py-2 sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
         >
           + Add city
         </button>
