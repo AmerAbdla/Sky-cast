@@ -1,41 +1,80 @@
-# 🌤️ Skycast (Weather-Now)
+# 🌤️ Skycast
 
-**Skycast** is a modern, high-performance, keyless global weather web application designed with a cinematic glassmorphism UI. It delivers real-time forecasts, interactive radar maps, and atmospheric visualizations without any API key restrictions[cite: 1].
+A key-free global weather app built with React. Search any city or browse the map to get current conditions, hourly and 7-day forecasts, a live rain radar, and an animated wind layer.
 
----
+**Live demo:** [sky-cast-blue-tau.vercel.app](https://sky-cast-blue-tau.vercel.app)
 
-## ✨ Features
-
-- 🌍 **Keyless Global Weather:** Powered by Open-Meteo API — no hidden API keys or usage limits required[cite: 1].
-- 🗺️ **Interactive Radar Map:** Real-time rain and cloud radar loop powered by RainViewer API[cite: 1].
-- 🍃 **60 FPS Wind Flow Simulation:** Smooth HTML5 Canvas particle animation simulating wind currents[cite: 1].
-- 📅 **7-Day & Hourly Forecasts:** Detailed temperature, humidity, wind, and atmospheric conditions with smooth SVG charts[cite: 1].
-- 📍 **Smart Level of Detail (LOD):** Dynamic city clustering across 180+ global capitals and cities based on map zoom levels[cite: 1].
-- 📱 **Cinematic Responsive UI:** Built with TailwindCSS v4 featuring glassmorphism elements and persistent local storage[cite: 1].
+<!-- Add 1–2 screenshots or a short GIF here, e.g. ![Skycast home](./docs/screenshot.png) -->
 
 ---
 
-## 🛠️ Tech Stack
+## Features
 
-- **Core UI:** React 19[cite: 1]
-- **Build Tool:** Vite 8[cite: 1]
-- **Styling:** TailwindCSS v4[cite: 1]
-- **Mapping & GIS:** Leaflet & React-Leaflet[cite: 1]
-- **Data APIs:** Open-Meteo API (Forecasts & Geocoding) & RainViewer API (Radar)[cite: 1]
-- **Animations:** HTML5 Canvas API[cite: 1]
-- **Routing:** React Router DOM v7[cite: 1]
+- **No API key needed:** forecasts and geocoding come from the free [Open-Meteo](https://open-meteo.com/) API, so the app runs with zero configuration.
+- **Radar map:** animated rain and cloud radar from [RainViewer](https://www.rainviewer.com/api.html), displayed on an interactive Leaflet map.
+- **Wind visualization:** a canvas-based particle animation that shows wind direction and speed.
+- **Hourly and 7-day forecasts:** temperature, humidity, wind, and conditions, with SVG charts.
+- **Zoom-aware city markers:** 180+ cities are clustered and revealed progressively as you zoom, so the map stays readable.
+- **Favorites:** saved locations persist between visits using `localStorage`.
+- **Responsive layout:** works on mobile and desktop, with a glassmorphism-style UI.
 
 ---
 
-## 🚀 Getting Started
+## Tech Stack
+
+| Area | Tools |
+| --- | --- |
+| UI | React 19, React Router v7 |
+| Build | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| Maps | Leaflet, React-Leaflet |
+| Data | Open-Meteo (forecast and geocoding), RainViewer (radar) |
+| Animation | HTML5 Canvas API |
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-Make sure you have Node.js (v18 or higher) installed on your system.
+- Node.js (v18 or higher)
+- npm
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/your-username/weather-now.git](https://github.com/your-username/weather-now.git)
-   cd weather-now
+```bash
+git clone https://github.com/AmerAbdla/Sky-cast.git
+cd Sky-cast
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+Then open the URL printed in the terminal (usually `http://localhost:5173`).
+
+### Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## Notes
+
+- Open-Meteo's free tier is intended for non-commercial use and has rate limits, so heavy traffic may need a paid plan or self-hosting.
+
+## Credits
+
+- Weather data: [Open-Meteo](https://open-meteo.com/) (CC BY 4.0)
+- Radar tiles: [RainViewer](https://www.rainviewer.com/)
+- Map data: © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
+
+## License
+
+Add a license (for example MIT) and state it here.
